@@ -5,3 +5,12 @@ build-backend = "hatchling.build"
 [project]
 name = "accentor"
 version = "3.0.0a1"
+
+[project.optional-dependencies]
+docs = [
+    "sphinx>=7",
+    "furo",
+    "sphinx-autodoc-typehints",
+    "sphinx-copybutton",
+    "myst-parser",
+]
