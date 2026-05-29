@@ -2,6 +2,8 @@
 
 *One who sings with another* — a Python library for harmonizing agentic and conventional software.
 
+**[Documentation](https://accentor-ai.github.io/py-accentor/)**
+
 Agentic processes are versatile but fragile — they hallucinate, drift from instructions, and produce outputs that are hard to validate. Conventional processes are reliable but rigid — they break when inputs arrive in an unexpected shape or when the task demands judgment. These weaknesses are complementary. Accentor composes both paradigms in a single pipeline so each strengthens the other.
 
 ## Installation
@@ -113,7 +115,7 @@ accentor/                       ← the library
 examples/
   focused_examples/             ← 6 numbered capability recipes (start here)
 tests/                          ← pytest suite (deterministic, offline)
-docs/                           ← Sphinx documentation source
+docs/                           ← Sphinx source (deployed at accentor-ai.github.io/py-accentor)
 ```
 
 **Focused examples** are the best way to learn the library. Each directory contains an `example.py` (compact usage sketch) and a `README.md` (boundary narrative, failure scenarios, and a sample prompt for agent-authored variants). Read them in numeric order:
@@ -133,13 +135,13 @@ Accentor `.py` files are designed to be authored by coding agents. Show a coding
 
 ## Documentation
 
-Full walkthrough and API reference are available in [`docs/`](docs/). Build locally:
+Full walkthrough and API reference are available at **[accentor-ai.github.io/py-accentor](https://accentor-ai.github.io/py-accentor/)**:
 
-```bash
-pip install -e ".[docs]"
-sphinx-build -b html docs docs/_build/html
-open docs/_build/html/index.html
-```
+- [Getting Started](https://accentor-ai.github.io/py-accentor/getting_started.html) — installation, first task, reading results
+- [Why Accentor](https://accentor-ai.github.io/py-accentor/walkthrough/why_accentor.html) — the case for hybridization
+- [Composition Patterns](https://accentor-ai.github.io/py-accentor/walkthrough/composition_patterns.html) — ACO, CAO, and routing
+- [Package Primitives](https://accentor-ai.github.io/py-accentor/walkthrough/package_primitives.html) — the five module groups
+- [API Reference](https://accentor-ai.github.io/py-accentor/api_reference/core/index.html) — per-module documentation
 
 ## Testing
 
