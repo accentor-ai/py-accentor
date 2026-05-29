@@ -1,8 +1,8 @@
 """Sphinx configuration for Accentor documentation."""
 
 project = "Accentor"
-copyright = "2026, Modulark. Released under the MIT License."
-author = "Modulark"
+copyright = "2026, Victor Kostyuk and Arjumand Masood. Released under the MIT License."
+author = "Victor Kostyuk and Arjumand Masood"
 release = "3.0.0a1"
 
 extensions = [
