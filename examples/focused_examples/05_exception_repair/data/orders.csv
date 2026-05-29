@@ -1,0 +1,4 @@
+order_id,amount,status
+1001,19.99,paid
+1002,12.50,pending
+1003,44.00,paid

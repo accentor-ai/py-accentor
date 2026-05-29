@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.DS_Store
+.source_backup_path
+
+docs/_build/
+.venv/
+.accentor/
+dist/
+*.egg-info/
+.coverage
+htmlcov/
+
+# POC execution artifacts are reproducible and may contain session metadata.
+poc/**/run_workspace/
