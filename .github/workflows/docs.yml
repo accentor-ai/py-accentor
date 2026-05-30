@@ -2,20 +2,18 @@ name: Deploy Docs
 
 on:
   push:
-    branches: [main]
+    branches: [main, dev]
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
   group: pages
   cancel-in-progress: false
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -24,17 +22,32 @@ jobs:
 
       - name: Build Sphinx docs
         run: uv run --extra docs sphinx-build -b html docs docs/_build/html
+        env:
+          DOCS_BRANCH: ${{ github.ref_name }}
 
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: docs/_build/html
+      - name: Stash build output
+        run: cp -a docs/_build/html /tmp/docs-build
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Deploy to gh-pages
+        run: |
+          git fetch origin gh-pages:gh-pages 2>/dev/null && git checkout gh-pages || {
+            git checkout --orphan gh-pages
+            git rm -rf .
+          }
+
+          if [ "${{ github.ref_name }}" = "main" ]; then
+            find . -maxdepth 1 ! -name dev ! -name .git ! -name . ! -name .nojekyll -exec rm -rf {} +
+            cp -a /tmp/docs-build/. .
+          else
+            rm -rf dev
+            cp -a /tmp/docs-build dev
+          fi
+
+          touch .nojekyll
+
+          git add -A
+          git diff --cached --quiet && echo "No changes to deploy" && exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "Deploy docs from ${{ github.ref_name }} (${{ github.sha }})"
+          git push origin gh-pages

@@ -2,7 +2,7 @@
 
 *One who sings with another* — a Python library for harmonizing agentic and conventional software.
 
-**[Documentation](https://accentor-ai.github.io/py-accentor/)**
+**[Read the docs!](https://accentor-ai.github.io/py-accentor/)**
 
 Agentic processes are versatile but fragile — they hallucinate, drift from instructions, and produce outputs that are hard to validate. Conventional processes are reliable but rigid — they break when inputs arrive in an unexpected shape or when the task demands judgment. These weaknesses are complementary. Accentor composes both paradigms in a single pipeline so each strengthens the other.
 
