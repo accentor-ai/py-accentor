@@ -1,9 +1,13 @@
 """Sphinx configuration for Accentor documentation."""
 
+import os
+
 project = "Accentor"
 copyright = "2026, Victor Kostyuk and Arjumand Masood. Released under the MIT License."
 author = "Victor Kostyuk and Arjumand Masood"
 release = "3.0.0a1"
+
+_docs_branch = os.environ.get("DOCS_BRANCH", "main")
 
 extensions = [
     "sphinx.ext.autodoc",
@@ -22,7 +26,10 @@ templates_path = ["_templates"]
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 html_theme = "furo"
-html_title = "Accentor"
+html_title = (
+    'Accentor<br><small>py-accentor-dev</small>' if _docs_branch == "dev"
+    else "Accentor"
+)
 html_static_path = ["_static"]
 
 html_logo = "_static/accentor-logo.png"
